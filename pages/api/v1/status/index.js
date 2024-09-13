@@ -7,17 +7,19 @@ async function status(request, response) {
   const postgresVersionString = postgresVersionQuery.rows[0].server_version;
 
   const maxConections = await database.query("SHOW max_connections;");
-  const usedConections = await database.query(
-    "select count(*) FROM pg_stat_activity WHERE datname = 'local_db';",
-  );
-  console.log(usedConections);
+
+  const databaseName = process.env.POSTGRES_DB;
+  const usedConnections = await database.query({
+    text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;",
+    values: [databaseName],
+  });
 
   response.status(200).json({
     updated_at: updatedAt,
     depedencies: {
       database: {
         max_connections: maxConections.rows[0].max_connections,
-        opened_connections: usedConections.rows.length,
+        opened_connections: usedConnections.rows[0].count,
       },
       postgres_version: postgresVersionString,
     },
