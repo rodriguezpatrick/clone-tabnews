@@ -1,10 +1,10 @@
 import database from "infra/database.js";
+import orchestrator from "tests/orchestrator.js";
 
-beforeAll(cleanDatabase);
-
-async function cleanDatabase() {
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
   await database.query("drop schema public cascade; create schema public;");
-}
+});
 
 test("POST to /api/v1/migrations should return 200", async () => {
   const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
@@ -13,7 +13,7 @@ test("POST to /api/v1/migrations should return 200", async () => {
   expect(response1.status).toBe(201);
 
   const responseBody1 = await response1.json();
-  console.log(responseBody1);
+  // console.log(responseBody1);
   // naturalmente isso deveria ser tratado como um array;
 
   expect(Array.isArray(responseBody1)).toBe(true);
@@ -25,7 +25,7 @@ test("POST to /api/v1/migrations should return 200", async () => {
   expect(response2.status).toBe(200);
 
   const responseBody2 = await response2.json();
-  console.log(responseBody2);
+  // console.log(responseBody2);
   // naturalmente isso deveria ser tratado como um array;
 
   expect(Array.isArray(responseBody2)).toBe(true);
