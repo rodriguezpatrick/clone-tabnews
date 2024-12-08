@@ -11,14 +11,7 @@ test("GET to /api/v1/migrations should return 200", async () => {
   expect(response.status).toBe(200);
 
   const responseBody = await response.json();
-  // console.log(responseBody);
-  // naturalmente isso deveria ser tratado como um array;
 
   expect(Array.isArray(responseBody)).toBe(true);
   expect(responseBody.length).toBeGreaterThan(0);
 });
-
-// test.only("puxar ambiente de teste", () => {
-//   console.log(process.env.POSTGRES_HOST);
-//   database.query("SELECT 1+1;");
-// });
