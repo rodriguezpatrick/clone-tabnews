@@ -15,4 +15,7 @@ jobs:
 
       - run: npm ci
 
+      - name: Ensure script has execute permissions
+        run: chmod +x ./infra/scripts/close-postgres-container.sh
+
       - run: npm test
