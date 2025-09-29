@@ -17,7 +17,6 @@ export class InternalServerError extends Error {
     };
   }
 }
-
 export class ServiceError extends Error {
   constructor({ cause, message }) {
     super(message || "Serviço indisponível no momento", {
@@ -63,6 +62,26 @@ export class MethodNotAllowedError extends Error {
     this.action =
       "Verifique se o método HTTP enviado é válido para este endpoint";
     this.statusCode = 405;
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      action: this.action,
+      status_code: this.statusCode,
+    };
+  }
+}
+export class NotFoundError extends Error {
+  constructor({ cause, message, action }) {
+    super(message || "O username informado não foi encontrado no sistema.", {
+      cause,
+    });
+    this.name = "NotFoundError";
+    this.action =
+      action || "Verifique se o username está digitado corretamente";
+    this.statusCode = 404;
   }
 
   toJSON() {
