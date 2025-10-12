@@ -38,12 +38,13 @@ describe("POST /api/v1/users", () => {
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
 
       const userInDatabase = await user.findOneByUsername("patrickrodrigues");
+      const pepper = process.env.PEPPER_SECRET;
       const correctPasswordMatch = await password.compare(
-        "senha123",
+        "senha123" + pepper,
         userInDatabase.password,
       );
       const incorrectPasswordMatch = await password.compare(
-        "senha123",
+        "senhaErrada" + pepper,
         userInDatabase.password,
       );
 
