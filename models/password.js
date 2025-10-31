@@ -14,7 +14,8 @@ function getNumberOfRounds() {
 }
 
 async function compare(providedPassword, storedPassword) {
-  return await bcryptjs.compare(providedPassword, storedPassword);
+  const passwordwithpepper = providedPassword + pepper;
+  return await bcryptjs.compare(passwordwithpepper, storedPassword);
 }
 
 const password = {

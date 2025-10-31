@@ -38,13 +38,12 @@ describe("POST /api/v1/users", () => {
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
 
       const userInDatabase = await user.findOneByUsername("patrickrodrigues");
-      const pepper = process.env.PEPPER_SECRET;
       const correctPasswordMatch = await password.compare(
-        "senha123" + pepper,
+        "senha123",
         userInDatabase.password,
       );
       const incorrectPasswordMatch = await password.compare(
-        "senhaErrada" + pepper,
+        "senhaErrada",
         userInDatabase.password,
       );
 
@@ -83,7 +82,7 @@ describe("POST /api/v1/users", () => {
       expect(responseBody2).toEqual({
         name: "ValidationError",
         message: "O email informado já está cadastrado.",
-        action: "Utilize outro email para realizar o cadastro",
+        action: "Utilize outro email para realizar esta operação",
         status_code: 400,
       });
     });
@@ -118,7 +117,7 @@ describe("POST /api/v1/users", () => {
       expect(responseBody2).toEqual({
         name: "ValidationError",
         message: "O nome de usuário informado já está cadastrado.",
-        action: "Utilize outro nome de usuário para realizar o cadastro",
+        action: "Utilize outro username para realizar esta operação",
         status_code: 400,
       });
     });
