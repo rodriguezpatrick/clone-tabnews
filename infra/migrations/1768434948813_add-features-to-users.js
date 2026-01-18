@@ -9,3 +9,5 @@ exports.up = (pgm) => {
 };
 
 exports.down = false;
+
+//eu rodei essa migration em localhost, mas não sei se ela vai interferir para a próxima aula, já que os testes estão falhando
