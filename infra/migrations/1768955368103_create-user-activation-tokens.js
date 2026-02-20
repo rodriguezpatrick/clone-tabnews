@@ -5,11 +5,6 @@ exports.up = (pgm) => {
       primaryKey: true,
       default: pgm.func("gen_random_uuid()"),
     },
-    used: {
-      type: "boolean",
-      notNull: true,
-      default: false,
-    },
     used_at: {
       type: "timestamptz",
       notNull: false,

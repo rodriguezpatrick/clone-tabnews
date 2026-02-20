@@ -92,44 +92,6 @@ describe("PATCH /api/v1/users/[username]", () => {
         action: "Utilize outro email para realizar esta operação",
         status_code: 400,
       });
-
-      // const response2 = await fetch(
-      //   "http://localhost:3000/api/v1/users/email2",
-      //   {
-      //     method: "PATCH",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       email: "email3@curso.dev",
-      //     }),
-      //   },
-      // );
-
-      // expect(response2.status).toBe(200);
-
-      // const response2Object = await fetch(
-      //   "http://localhost:3000/api/v1/users/email2",
-      // );
-
-      // const response2Body = await response2Object.json();
-
-      // console.log(response2Body);
-
-      // const response3 = await fetch(
-      //   "http://localhost:3000/api/v1/users/email1",
-      //   {
-      //     method: "PATCH",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       email: "email3@curso.dev",
-      //     }),
-      //   },
-      // );
-
-      // expect(response3.status).toBe(400);
     });
     test("With same 'username' but different case", async () => {
       await orchestrator.createUser({
