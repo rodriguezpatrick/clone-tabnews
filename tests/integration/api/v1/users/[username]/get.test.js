@@ -20,15 +20,13 @@ describe("GET /api/v1/users/[username]", () => {
         "http://localhost:3000/api/v1/users/MesmoCase",
       );
 
-      expect(response2.status).toBe(201);
+      expect(response2.status).toBe(200);
 
       const response2Body = await response2.json();
       expect(response2Body).toEqual({
         id: response2Body.id,
         username: "MesmoCase",
-        email: "mesmo.case@curso.dev",
         features: ["read:activation_token"],
-        password: response2Body.password,
         created_at: response2Body.created_at,
         updated_at: response2Body.updated_at,
       });
@@ -47,15 +45,13 @@ describe("GET /api/v1/users/[username]", () => {
         "http://localhost:3000/api/v1/users/diferentecase",
       );
 
-      expect(response2.status).toBe(201);
+      expect(response2.status).toBe(200);
 
       const response2Body = await response2.json();
       expect(response2Body).toEqual({
         id: response2Body.id,
         username: "DiferenteCase",
-        email: "diferente.case@curso.dev",
         features: ["read:activation_token"],
-        password: response2Body.password,
         created_at: response2Body.created_at,
         updated_at: response2Body.updated_at,
       });
