@@ -13,7 +13,7 @@ const availableFeatures = [
   "read:session",
 
   //ACTIVATION_TOKEN
-  "read:activatio:token",
+  "read:activation_token",
 
   // MIGRATION
   "create:migration",
