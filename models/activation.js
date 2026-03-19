@@ -31,15 +31,15 @@ async function create(userId) {
 
 async function sendEmailToUser(user, activationToken) {
   await email.send({
-    from: "FinTab <contato@fintab.com.br>",
+    from: "ChemiNews <contato@cheminews.com.br>",
     to: user.email,
-    subject: "Ative seu cadastro no FinTab!",
-    text: `${user.username}, clique no link abaixo para ativar seu cadastro no FinTab
+    subject: "Ative seu cadastro no ChemiNews!",
+    text: `${user.username}, clique no link abaixo para ativar seu cadastro no ChemiNews
     
 ${webserver.origin}/cadastro/ativar/${activationToken.id}
 
 Atencionsamente,
-Equipe FinTab`,
+Equipe ChemiNews`,
   });
 }
 

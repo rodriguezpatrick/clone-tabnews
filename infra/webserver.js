@@ -7,7 +7,7 @@ function getOrigin() {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return "clone-tabnews-nine-liart.vercel.app";
+  return "https://cheminews.com.br";
 }
 
 const webserver = {
