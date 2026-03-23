@@ -22,7 +22,7 @@ export default function StatusPage() {
           <DatabaseInfo propertyName="opened_connections" />
         </li>
         <li>
-          <DatabaseInfo propertyName="postgres_version" />
+          <DatabaseInfo propertyName="version" />
         </li>
       </ul>
     </>
@@ -51,9 +51,6 @@ function DatabaseInfo({ propertyName }) {
   if (!isLoading && data) {
     value = data.depedencies.database[propertyName];
   }
-  if (!isLoading && data && propertyName === "postgres_version") {
-    value = data.depedencies[propertyName];
-  }
 
   console.log(value);
 
@@ -61,7 +58,7 @@ function DatabaseInfo({ propertyName }) {
     <div>
       {propertyName === "max_connections" && `Máximo de Conexões: ${value}`}
       {propertyName === "opened_connections" && `Conexões Abertas: ${value}`}
-      {propertyName === "postgres_version" && `Versão do Postgres: ${value}`}
+      {propertyName === "version" && `Versão do Postgres: ${value}`}
     </div>
   );
 }
