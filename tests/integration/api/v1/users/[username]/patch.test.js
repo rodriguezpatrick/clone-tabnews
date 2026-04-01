@@ -286,6 +286,13 @@ describe("PATCH /api/v1/users/[username]", () => {
       expect(uuidVersion(responseBody.id)).toBe(4);
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
+
+      expect(responseBody.updated_at > responseBody.created_at).toBe(true);
+
+      const userInDatabase = await user.findOneByUsername(
+        uniqueuser1response.username,
+      );
+      expect(userInDatabase.email).toBe("uniqueEmail2@curso.dev");
     });
     test("With new `password`", async () => {
       const uniqueuser1response = await orchestrator.createUser({
