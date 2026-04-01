@@ -3,14 +3,11 @@ import controller from "infra/controller.js";
 import migrator from "models/migrator";
 import authorization from "models/authorization.js";
 
-const router = createRouter();
-
-router.use(controller.injectAnonymousOrUser);
-router
+export default createRouter()
+  .use(controller.injectAnonymousOrUser)
   .get(controller.canRequest("read:migration"), getHandler)
-  .post(controller.canRequest("create:migration"), postHandler);
-
-export default router.handler(controller.errorsHandlers);
+  .post(controller.canRequest("create:migration"), postHandler)
+  .handler(controller.errorsHandlers);
 
 async function getHandler(request, response) {
   const userTryingToGet = request.context.user;
