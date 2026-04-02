@@ -83,6 +83,7 @@ describe("GET /api/v1/users/user", () => {
         maxAge: session.EXPIRATION_IN_MILLISECONDS / 1000,
         path: "/",
         httpOnly: true,
+        sameSite: "Lax",
       });
     });
     test("With nonexistent session", async () => {
@@ -204,6 +205,7 @@ describe("GET /api/v1/users/user", () => {
         maxAge: session.EXPIRATION_IN_MILLISECONDS / 1000,
         path: "/",
         httpOnly: true,
+        sameSite: "Lax",
       });
     });
   });
