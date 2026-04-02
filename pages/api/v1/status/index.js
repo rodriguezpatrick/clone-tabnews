@@ -31,7 +31,7 @@ async function getHandler(request, response) {
 
   const statusObject = {
     updated_at: updatedAt,
-    depedencies: {
+    dependencies: {
       database: {
         version: databaseVersionValue,
         max_connections: parseInt(databaseMaxConnectionsValue),
