@@ -30,7 +30,7 @@ describe("GET /api/v1/status", () => {
         "read:status:all",
       ]);
       const previlegedUserSession = await orchestrator.createSession(
-        activatedPrivilegedUser.id,
+        activatedPrivilegedUser,
       );
 
       const response = await fetch(`${webserver.origin}/api/v1/status`, {

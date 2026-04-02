@@ -32,7 +32,7 @@ describe("GET /api/v1/users/user", () => {
         username: "UserWithValidSession",
       });
       const activatedUser = await orchestrator.activateUser(createdUser);
-      const sessionObject = await orchestrator.createSession(createdUser.id);
+      const sessionObject = await orchestrator.createSession(createdUser);
 
       const response = await fetch(`${webserver.origin}/api/v1/user`, {
         headers: {
@@ -126,7 +126,7 @@ describe("GET /api/v1/users/user", () => {
       const createdUser = await orchestrator.createUser({
         username: "UserWithExpiredSession",
       });
-      const sessionObject = await orchestrator.createSession(createdUser.id);
+      const sessionObject = await orchestrator.createSession(createdUser);
 
       jest.useRealTimers(); //volta com o relógio real do sistema
 
@@ -157,7 +157,7 @@ describe("GET /api/v1/users/user", () => {
         username: "UserWithAnAlmostExpiredSession",
       });
       const activatedUser = await orchestrator.activateUser(createdUser);
-      const sessionObject = await orchestrator.createSession(createdUser.id);
+      const sessionObject = await orchestrator.createSession(createdUser);
 
       jest.useRealTimers(); //volta com o relógio real do sistema
 
