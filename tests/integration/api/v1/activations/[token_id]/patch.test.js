@@ -16,9 +16,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
     test("With nonexistant token", async () => {
       const response = await fetch(
         `${webserver.origin}/api/v1/activations/256bc49a-132a-42e4-8334-998fd17ee71e`,
-        {
-          method: "PATCH",
-        },
+        { method: "PATCH" },
       );
 
       expect(response.status).toBe(404);
@@ -34,9 +32,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
     });
     test("With expired token", async () => {
       jest.useFakeTimers({
-        now: new Date(
-          Date.now() - (session.EXPIRATION_IN_MILLISECONDS - 60000),
-        ),
+        now: Date.now() - (session.EXPIRATION_IN_MILLISECONDS - 60000),
       });
 
       const createdUser = await orchestrator.createUser();
@@ -46,9 +42,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
 
       const response = await fetch(
         `${webserver.origin}/api/v1/activations/${expiredActivationToken.id}`,
-        {
-          method: "PATCH",
-        },
+        { method: "PATCH" },
       );
 
       expect(response.status).toBe(404);
@@ -69,18 +63,14 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
 
       const response1 = await fetch(
         `${webserver.origin}/api/v1/activations/${expiredActivationToken.id}`,
-        {
-          method: "PATCH",
-        },
+        { method: "PATCH" },
       );
 
       expect(response1.status).toBe(200);
 
       const response2 = await fetch(
         `${webserver.origin}/api/v1/activations/${expiredActivationToken.id}`,
-        {
-          method: "PATCH",
-        },
+        { method: "PATCH" },
       );
 
       expect(response2.status).toBe(404);
@@ -101,9 +91,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
 
       const response = await fetch(
         `${webserver.origin}/api/v1/activations/${activationToken.id}`,
-        {
-          method: "PATCH",
-        },
+        { method: "PATCH" },
       );
 
       expect(response.status).toBe(200);
@@ -153,9 +141,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
 
       const response = await fetch(
         `${webserver.origin}/api/v1/activations/${activationToken.id}`,
-        {
-          method: "PATCH",
-        },
+        { method: "PATCH" },
       );
 
       expect(response.status).toBe(403);
@@ -184,9 +170,7 @@ describe("PATCH /api/v1/activations/[token_id]", () => {
         `${webserver.origin}/api/v1/activations/${user2SessionObject.id}`,
         {
           method: "PATCH",
-          headers: {
-            Cookie: `session_id=${user1SessionObject.token}`,
-          },
+          headers: { Cookie: `session_id=${user1SessionObject.token}` },
         },
       );
 
