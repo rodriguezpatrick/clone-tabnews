@@ -150,7 +150,6 @@ describe("GET /api/v1/users/user", () => {
     test("with a session that’s about to expire", async () => {
       jest.useFakeTimers({
         now: Date.now() - (session.EXPIRATION_IN_MILLISECONDS - 60000),
-        
       });
 
       const createdUser = await orchestrator.createUser({
