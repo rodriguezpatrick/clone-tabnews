@@ -49,7 +49,7 @@ function DatabaseInfo({ propertyName }) {
   let value = "Carregando...";
 
   if (!isLoading && data) {
-    value = data.depedencies.database[propertyName];
+    value = data.dependencies.database[propertyName];
   }
 
   console.log(value);
